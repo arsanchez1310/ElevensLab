@@ -1,4 +1,4 @@
-// Hello World
+// Final Test
 
 public class Card {
 
@@ -6,7 +6,7 @@ public class Card {
 	 * String value that holds the suit of the card
 	 */
 	private String suit;
-	private String test;
+
 	/**
 	 * String value that holds the rank of the card
 	 */
