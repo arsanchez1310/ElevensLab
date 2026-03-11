@@ -5,6 +5,7 @@ import java.util.ArrayList;
  * The ElevensBoard class represents the board in a game of Elevens.
  */
 public class ElevensBoard {
+	
 
 	/**
 	 * The size (number of cards) on the board.
@@ -184,7 +185,7 @@ public class ElevensBoard {
 	 *         false otherwise.
 	 */
 	public boolean isLegal(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		return containsPairSum11(selectedCards) || containsJQK(selectedCards);
 	}
 
 	/**
@@ -197,6 +198,9 @@ public class ElevensBoard {
 	 */
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		List<Integer> anotherplay = cardIndexes();
+		return containsPairSum11(anotherplay) || containsJQK(anotherplay);
+
 	}
 
 
@@ -218,7 +222,14 @@ public class ElevensBoard {
 	 *              contain an 11-pair; false otherwise.
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for(int i = 0; i < selectedCards.size(); i ++){
+			for(int j = i; j < selectedCards.size(); i ++){
+				if(cardAt(selectedCards.get(i).value) + cardAt(selectedCards.get(j).value) == 11){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -230,6 +241,22 @@ public class ElevensBoard {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		boolean isJ = false;
+		boolean isQ = false;
+		boolean isK = false;
+		for(int i = 0; i < selectedCards.size(); i ++){
+			if(cardAt(selectedCards.get(i)).rank().equalsIgnoreCase("jack")){
+				isJ = true;
+			}
+			if(cardAt(selectedCards.get(i)).rank().equalsIgnoreCase("queen")){
+				isQ = true;
+			}
+			if(cardAt(selectedCards.get(i)).rank().equalsIgnoreCase("king")){
+				isK = true;
+			}
+
+
+		}
 	}
+	return isJ && isQ && isK;
 }
