@@ -5,7 +5,9 @@ import java.util.ArrayList;
  * The ElevensBoard class represents the board in a game of Elevens.
  */
 public class ElevensBoard {
-	
+
+	public int test;
+
 
 	/**
 	 * The size (number of cards) on the board.
